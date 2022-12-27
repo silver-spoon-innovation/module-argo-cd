@@ -20,12 +20,8 @@ provider "helm" {
 	}
 }
 
-resource "kubernetes_namespace" "ns_argocd" {
+resource "kubernetes_namespace" "ns-argocd" {
   metadata {
-    annotations = {
-      name = "argocd"
-    }
-
     name = "argocd"
   }
 }
@@ -34,8 +30,8 @@ resource "helm_release" "argocd" {
   name             = "argocd"
   repository       = "https://argoproj.github.io/argo-helm"
   chart            = "argo-cd"
-  namespace        = kubernetes_namespace.ns_argocd.metadata.0.name
+  namespace        = kubernetes_namespace.ns-argocd.metadata.0.name
   create_namespace = false
 
-  depends_on = [kubernetes_namespace.ns_argocd]
+  depends_on = [kubernetes_namespace.ns-argocd]
 }
