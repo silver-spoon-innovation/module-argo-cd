@@ -1,3 +1,7 @@
+variable "aws_region" {
+	type = string
+}
+
 variable "kubernetes_cluster_id" {
 	type = string
 }
@@ -11,10 +15,6 @@ variable "kubernetes_cluster_endpoint" {
 }
 
 variable "kubernetes_cluster_name" {
-	type = string
-}
-
-variable "kubernetes_cluster_token" {
 	type = string
 }
 
