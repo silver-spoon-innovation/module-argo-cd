@@ -37,6 +37,7 @@ resource "helm_release" "argocd" {
   chart            = "argo-cd"
   namespace        = kubernetes_namespace.ns-argocd.metadata.0.name
   create_namespace = false
+  timeout          = 3600
 
   depends_on = [kubernetes_namespace.ns-argocd]
 }
